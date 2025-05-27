@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>PhishDetect AI 🔐</h2>
+  <textarea id="input" placeholder="Paste message here..."></textarea>
+  <input id="email" type="email" placeholder="Sender Email">
+  <button id="analyze">Analyze</button>
+  <div id="result"></div>
+  <section>
+    <h3>History</h3>
+    <button id="exportHistory">📁 Export History</button>
+    <ul id="history"></ul>
+  </section>
+  <section>
+    <h3>Blocked Emails</h3>
+    <button id="exportBlocklist">📁 Export Blocklist</button>
+    <ul id="blocklist"></ul>
+  </section>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

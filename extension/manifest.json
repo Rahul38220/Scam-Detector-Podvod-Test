@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "PhishDetect AI",
+  "version": "1.0",
+  "permissions": ["storage", "scripting"],
+  "action": { "default_popup": "popup.html" },
+  "background": {
+    "service_worker": "banner.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["banner.js"]
+    }
+  ],
+  "host_permissions": ["http://localhost:8000/", "https://your-railway-app-url/"]
+}
