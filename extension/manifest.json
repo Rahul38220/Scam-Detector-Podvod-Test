@@ -2,16 +2,30 @@
   "manifest_version": 3,
   "name": "PhishDetect AI",
   "version": "1.0",
-  "permissions": ["storage", "scripting"],
-  "action": { "default_popup": "popup.html" },
+  "permissions": [
+    "storage",
+    "scripting"
+    // No explicit 'tabs' or 'activeTab' if we are matching specific URLs.
+    // 'scripting' is important for content scripts to interact with pages.
+  ],
+  "host_permissions": [
+    "http://localhost:8000/",
+    "https://your-railway-app-url/",
+    // NEW: Add Gmail domains. Be as specific as possible.
+    "https://mail.google.com/*",
+    "https://inbox.google.com/*" // If Inbox by Gmail is still relevant or similar services.
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
   "background": {
-    "service_worker": "banner.js"
+    "service_worker": "banner.js" // This also acts as your background script
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["banner.js"]
+      "matches": ["https://mail.google.com/*"], // NEW: Make sure it only runs on Gmail
+      "js": ["banner.js", "util.js", "storage.js"], // Add util.js and storage.js if they contain helper functions for banner.js
+      "run_at": "document_idle" // Ensures the DOM is mostly loaded
     }
-  ],
-  "host_permissions": ["http://localhost:8000/", "https://your-railway-app-url/"]
+  ]
 }
