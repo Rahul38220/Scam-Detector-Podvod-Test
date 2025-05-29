@@ -1,1 +1,12 @@
 ...
+
+.phish-detect-banner {
+    padding: 5px 10px;
+    margin: 5px 0;
+    font-weight: bold;
+    border-radius: 4px;
+    text-align: center;
+    /* Styles will be dynamically set by banner.js based on classification */
+    /* background-color: #ffcccc; */
+    /* color: #cc0000; */
+}
